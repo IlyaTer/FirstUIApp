@@ -1,8 +1,12 @@
+package ui;
+
 import model.Car;
+import reader.FileReader;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.util.LinkedList;
 import java.util.List;
 
 public class SwingFrame extends JFrame
@@ -10,10 +14,12 @@ public class SwingFrame extends JFrame
   private Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
   private JDialog infoDialog;
   private JDialog addDialog;
+  private JDialog exitDialog;
   private JTable table;
-  private List<Car> carList;
+  private List<Car> carList = new LinkedList<>();
+  private int firstLength = 0;
 
-
+//todo добавить сохранение при закрытии
   public SwingFrame()
   {
 
@@ -29,7 +35,11 @@ public class SwingFrame extends JFrame
     JMenuItem exit = new JMenuItem("Exit");
     exit.addActionListener((e) ->
                            {
-                             System.exit(0);
+                             if(exitDialog == null)
+                             {
+                               exitDialog = new ExitDialog(this);
+                             }
+                             exitDialog.setVisible(true);
                            });
     fileMenu.add(exit);
 
@@ -74,21 +84,17 @@ public class SwingFrame extends JFrame
     model.addColumn("Price");
     table = new JTable(model);
 
-    //todo refactor code
     //insert data from file
-    for(int i = 0; i < 10; i++)
+    FileReader.readFromFile(carList,"Data/Cars");
+    for(Car car:carList)
     {
-      Object[] data = new Object[5];
-      int iter = 0;
-      for(; iter < 5; iter++)
-      {
-        data[iter] = String.valueOf((int) (Math.random()*1000000));
-      }//end for
+      Object[] data = {car.getMark(), car.getModel(), car.getYearOfIssue(), car.getNumber(), car.getPrice()};
       ((DefaultTableModel) table.getModel()).addRow(data);
     }//end for
 
     JScrollPane scrollPane = new JScrollPane(table);
     add(scrollPane, BorderLayout.CENTER);
+    firstLength = carList.size();
     pack();
   }//end constructor
 
@@ -101,5 +107,6 @@ public class SwingFrame extends JFrame
   {
     return carList;
   }
+
 
 }

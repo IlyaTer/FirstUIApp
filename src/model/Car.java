@@ -43,4 +43,54 @@ public class Car
     return res;
   }
 
+  public String getMark()
+  {
+    return mark;
+  }
+
+  public void setMark(String mark)
+  {
+    this.mark = mark;
+  }
+
+  public String getModel()
+  {
+    return model;
+  }
+
+  public void setModel(String model)
+  {
+    this.model = model;
+  }
+
+  public int getYearOfIssue()
+  {
+    return yearOfIssue;
+  }
+
+  public void setYearOfIssue(int yearOfIssue)
+  {
+    this.yearOfIssue = yearOfIssue;
+  }
+
+  public String getNumber()
+  {
+    return number;
+  }
+
+  public void setNumber(String number)
+  {
+    this.number = number;
+  }
+
+  public double getPrice()
+  {
+    return price;
+  }
+
+  public void setPrice(double price)
+  {
+    this.price = price;
+  }
+
 }

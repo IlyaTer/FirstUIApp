@@ -1,3 +1,5 @@
+import ui.SwingFrame;
+
 import javax.swing.*;
 import java.awt.*;
 
