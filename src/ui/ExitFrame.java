@@ -26,9 +26,7 @@ public class ExitFrame extends WindowAdapter
         case 0:
           WriterData.write(swingFrame.getCarList().getCarList());
           System.exit(0);
-        case 1:
-          System.exit(0);
-        case 3:
+        default:
           System.exit(0);
       }
     }
