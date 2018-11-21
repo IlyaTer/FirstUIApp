@@ -34,6 +34,6 @@ public class ExitFrame extends WindowAdapter
     {
       System.exit(0);
     }
-  }
+  }//end windowC;osing
 
 }
