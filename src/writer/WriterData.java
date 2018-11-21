@@ -12,17 +12,22 @@ public class WriterData
   {
     try(FileWriter writer = new FileWriter("Data/Cars",false))
     {
-      String writeStr = "";
+      StringBuffer writeStr = new StringBuffer();
       for(Car car: carList)
       {
-        writeStr += car.getMark()+";"+car.getModel()+
-                ";"+car.getYearOfIssue()+
-                ";"+car.getNumber()+
-                ";"+car.getPrice();
-        writeStr += "\n";
+        writeStr.append(car.getMark());
+        writeStr.append(";");
+        writeStr.append(car.getModel());
+        writeStr.append(";");
+        writeStr.append(car.getYearOfIssue());
+        writeStr.append(";");
+        writeStr.append(car.getNumber());
+        writeStr.append(";");
+        writeStr.append(car.getPrice());
+        writeStr.append("\n");
       }
 
-      writer.write(writeStr);
+      writer.write(writeStr.toString());
       writer.flush();
     }
     catch(IOException ex){

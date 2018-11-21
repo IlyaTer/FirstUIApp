@@ -1,0 +1,17 @@
+package ui.menu.file;
+
+import ui.SwingFrame;
+import ui.menu.file.items.exit.ExitItemMenu;
+
+import javax.swing.*;
+
+public class FileMenu extends JMenu
+{
+  public FileMenu(SwingFrame swingFrame)
+  {
+    super("File");
+
+    add(new ExitItemMenu(swingFrame));
+  }
+
+}
