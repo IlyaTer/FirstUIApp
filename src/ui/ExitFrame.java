@@ -20,7 +20,8 @@ public class ExitFrame extends WindowAdapter
   {
     if(swingFrame.getChangeCount() > 0)
     {
-      int i = JOptionPane.showConfirmDialog(swingFrame,"Save before exit?");
+      int i = JOptionPane.showConfirmDialog(swingFrame,"Save before exit?", "Exit window",
+                                            JOptionPane.YES_NO_OPTION);
       switch(i)
       {
         case 0:
