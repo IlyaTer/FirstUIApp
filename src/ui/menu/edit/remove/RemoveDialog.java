@@ -10,6 +10,7 @@ public class RemoveDialog extends JDialog
 {
   public RemoveDialog(SwingFrame swingFrame)
   {
+    super(swingFrame,"Remove ",true);
     setLocationByPlatform(true);
 
     JPanel fieldPanel = new JPanel();

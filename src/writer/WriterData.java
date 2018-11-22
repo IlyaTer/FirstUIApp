@@ -28,7 +28,6 @@ public class WriterData
       }
 
       writer.write(writeStr.toString());
-      writer.flush();
     }
     catch(IOException ex){
 
