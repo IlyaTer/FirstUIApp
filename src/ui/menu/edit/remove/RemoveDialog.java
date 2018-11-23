@@ -1,6 +1,7 @@
 package ui.menu.edit.remove;
 
 import model.Car;
+import model.CarModel;
 import ui.SwingFrame;
 
 import javax.swing.*;
@@ -8,7 +9,7 @@ import java.awt.*;
 
 public class RemoveDialog extends JDialog
 {
-  public RemoveDialog(SwingFrame swingFrame)
+  public RemoveDialog(SwingFrame swingFrame,CarModel carModel)
   {
     super(swingFrame,"Remove ",true);
     setLocationByPlatform(true);
@@ -30,17 +31,16 @@ public class RemoveDialog extends JDialog
                Car remCar = new Car("Car", "Car",
                                     2010,textField.getText(),
                                     1234567);
-               if(!swingFrame.getCarList().contains(remCar))
+               if(!carModel.contains(remCar))
                {
                  JOptionPane.showMessageDialog(this, "No such car!");
                  textField.setText("");
                }
                else
                {
-                 int listIndex = swingFrame.getCarList().indexOf(remCar);
-                 swingFrame.getCarList().remove(listIndex);
+                 int listIndex = carModel.indexOf(remCar);
+                 carModel.remove(listIndex);
                  textField.setText("");
-                 swingFrame.addCange();
                  setVisible(false);
                }
              });

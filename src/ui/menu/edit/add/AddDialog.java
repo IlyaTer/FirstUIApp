@@ -1,6 +1,7 @@
 package ui.menu.edit.add;
 
 import model.Car;
+import model.CarModel;
 import ui.SwingFrame;
 
 import javax.swing.*;
@@ -8,7 +9,7 @@ import java.awt.*;
 
 public class AddDialog extends JDialog
 {
-  public AddDialog(SwingFrame swingFrame)
+  public AddDialog(SwingFrame swingFrame,CarModel carModel)
   {
     super(swingFrame,"Add ",true);
     setLocationByPlatform(true);
@@ -81,7 +82,7 @@ public class AddDialog extends JDialog
                                     return;
                                   }
 
-                                  swingFrame.getCarList().add(new Car(markField.getText(),
+                                  carModel.add(new Car(markField.getText(),
                                                                       modelField.getText(),
                                                                       Integer.parseInt(yearField.getText()),
                                                                       numberField.getText(),
@@ -89,7 +90,6 @@ public class AddDialog extends JDialog
                                                                       ));
 
                                   clearFields(dataPanel);
-                                  swingFrame.addCange();
                                   setVisible(false);
                                 });
 

@@ -1,5 +1,6 @@
 package ui.menu.file.items.exit;
 
+import model.CarModel;
 import ui.SwingFrame;
 import writer.WriterData;
 
@@ -8,8 +9,9 @@ import java.awt.*;
 
 public class ExitDialog extends JDialog
 {
-  public ExitDialog(SwingFrame parent)
+  public ExitDialog(SwingFrame parent,CarModel carModel)
   {
+    super(parent);
     setLocationByPlatform(true);
     setLayout(new BorderLayout());
 
@@ -22,7 +24,7 @@ public class ExitDialog extends JDialog
     JButton ok = new JButton("Yes");
     ok.addActionListener(e->
                          {
-                           WriterData.write(parent.getCarList().getCarList());
+                           WriterData.write(carModel.getCarList());
                            System.exit(0);
                          });
     buttonPanel.add(ok);

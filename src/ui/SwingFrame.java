@@ -12,23 +12,19 @@ public class SwingFrame extends JFrame
 {
   private JTable table;
   private JMenuBar bar;
-  private CarModel carList;
-  private int changeCount;
 
-  public SwingFrame()
+  public SwingFrame(CarModel carModel)
   {
     setLocationByPlatform(true);
 
-    bar = new GeneralMenu(this);
+    bar = new GeneralMenu(this, carModel);
     add(bar, BorderLayout.NORTH);
 
-    carList = new CarModel();
-    table = new JTable(carList);
+    table = new JTable(carModel);
     JScrollPane scrollPane = new JScrollPane(table);
     add(scrollPane, BorderLayout.CENTER);
 
-    WindowListener listener = new ExitFrame();
-    ((ExitFrame) listener).setSwingFrame(this);
+    WindowListener listener = new ExitFrame(this, carModel);
     addWindowListener(listener);
 
     pack();
@@ -37,21 +33,6 @@ public class SwingFrame extends JFrame
   public JTable getTable()
   {
     return table;
-  }
-
-  public CarModel getCarList()
-  {
-    return carList;
-  }
-
-  public void addCange()
-  {
-    changeCount++;
-  }
-
-  public int getChangeCount()
-  {
-    return changeCount;
   }
 
 }

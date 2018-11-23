@@ -1,5 +1,6 @@
 package ui.menu;
 
+import model.CarModel;
 import ui.SwingFrame;
 import ui.menu.about.AboutMenu;
 import ui.menu.edit.EditMenu;
@@ -9,12 +10,12 @@ import javax.swing.*;
 
 public class GeneralMenu extends JMenuBar
 {
-  public GeneralMenu(SwingFrame swingFrame)
+  public GeneralMenu(SwingFrame swingFrame,CarModel carModel)
   {
     super();
 
-    add(new FileMenu(swingFrame));
-    add(new EditMenu(swingFrame));
+    add(new FileMenu(swingFrame, carModel));
+    add(new EditMenu(swingFrame, carModel));
     add(new AboutMenu(swingFrame));
   }
 

@@ -1,6 +1,7 @@
 package ui.menu.edit.add;
 
 import model.Car;
+import model.CarModel;
 import ui.SwingFrame;
 
 import javax.swing.*;
@@ -9,7 +10,7 @@ public class AddMenuItem extends JMenuItem
 {
   private JDialog dialog;
 
-  public AddMenuItem(SwingFrame swingFrame)
+  public AddMenuItem(SwingFrame swingFrame,CarModel carModel)
   {
     super("Add");
 
@@ -17,7 +18,7 @@ public class AddMenuItem extends JMenuItem
        {
          if(dialog == null)
          {
-           dialog = new AddDialog(swingFrame);
+           dialog = new AddDialog(swingFrame, carModel);
          }
          dialog.setVisible(true);
        });

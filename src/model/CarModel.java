@@ -9,10 +9,12 @@ import java.util.List;
 public class CarModel extends AbstractTableModel
 {
   private List<Car> carList = new LinkedList<>();
+  private boolean change;
 
   public CarModel()
   {
     FileReader.readFromFile(carList,"Data/Cars");
+    change = false;
   }
 
   public boolean add(Car car)
@@ -24,6 +26,7 @@ public class CarModel extends AbstractTableModel
 
     carList.add(car);
     fireTableDataChanged();
+    change = true;
     return true;
   }
 
@@ -45,7 +48,11 @@ public class CarModel extends AbstractTableModel
 
   public void remove(int index)
   {
-    carList.remove(index);
+    Car car = carList.remove(index);
+    if(car != null)
+    {
+      change = true;
+    }
     fireTableDataChanged();
   }
 
@@ -116,6 +123,11 @@ public class CarModel extends AbstractTableModel
   public List<Car> getCarList()
   {
     return carList;
+  }
+
+  public boolean isChange()
+  {
+    return change;
   }
 
 }
