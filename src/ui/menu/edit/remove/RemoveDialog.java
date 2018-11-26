@@ -6,6 +6,7 @@ import ui.SwingFrame;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowListener;
 
 public class RemoveDialog extends JDialog
 {
@@ -56,6 +57,9 @@ public class RemoveDialog extends JDialog
     buttonPanel.add(cancel);
 
     add(buttonPanel, BorderLayout.SOUTH);
+
+    WindowListener windowListener = new ExitRemove(this);
+    addWindowListener(windowListener);
 
     pack();
   }

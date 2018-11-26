@@ -6,6 +6,7 @@ import ui.SwingFrame;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowListener;
 
 public class AddDialog extends JDialog
 {
@@ -51,34 +52,45 @@ public class AddDialog extends JDialog
                                   //valid data
                                   if(!markField.getText().matches("[a-zA-Z]+"))
                                   {
-                                    clearFields(dataPanel);
-                                    JOptionPane.showMessageDialog(this,"Bad Mark!");
+                                    JOptionPane.showMessageDialog(this,"Incorrect characters" +
+                                            " in Mark!\n" +
+                                            "In this field you can enter only: A to Z or a to z!");
+                                    markField.setText("");
                                     return;
                                   }
                                   if(!modelField.getText().matches("[a-zA-Z_0-9]+"))
                                   {
-                                    clearFields(dataPanel);
-                                    JOptionPane.showMessageDialog(this,"Bad Model!");
+                                    JOptionPane.showMessageDialog(this,"Incorrect characters" +
+                                            " in Model!\n" +
+                                            "In this field you can enter only: A to Z or a to z and 0-9!");
+                                    modelField.setText("");
                                     return;
                                   }
                                   if(!yearField.getText().matches("[0-9]+") ||
                                           Integer.parseInt(yearField.getText()) < 1910 ||
                                           Integer.parseInt(yearField.getText()) > 2019)
                                   {
-                                    clearFields(dataPanel);
-                                    JOptionPane.showMessageDialog(this,"Bad Year!");
+                                    JOptionPane.showMessageDialog(this,"Incorrect characters" +
+                                            " in Year!\n" +
+                                            "In this field you can enter only:"+"\n"+" 0-9 and value must be greater 1910 " +
+                                            "and smaller 2019!");
+                                    yearField.setText("");
                                     return;
                                   }
                                   if(!numberField.getText().matches("[a-zA-Z_0-9]+"))
                                   {
-                                    clearFields(dataPanel);
-                                    JOptionPane.showMessageDialog(this,"Bad Number!");
+                                    JOptionPane.showMessageDialog(this,"Incorrect characters" +
+                                            " in Number!\n" +
+                                            "In this field you can enter only: A to Z or a to z and 0-9!");
+                                    numberField.setText("");
                                     return;
                                   }
                                   if(!priceField.getText().matches("[0-9]+"))
                                   {
-                                    clearFields(dataPanel);
-                                    JOptionPane.showMessageDialog(this,"Bad Price!");
+                                    JOptionPane.showMessageDialog(this,"Incorrect characters" +
+                                            " in Price!\n" +
+                                            "In this field you can enter only:0-9!");
+                                    priceField.setText("");
                                     return;
                                   }
 
@@ -104,6 +116,9 @@ public class AddDialog extends JDialog
     butonPanel.add(addButton);
     butonPanel.add(cancelButton);
     add(butonPanel,BorderLayout.SOUTH);
+
+    WindowListener listener = new ExitAdd(this);
+    addWindowListener(listener);
 
     pack();
   }
