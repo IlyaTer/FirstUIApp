@@ -49,6 +49,7 @@ public class RemoveDialog extends JDialog
     JButton cancel = new JButton("Cancel");
     cancel.addActionListener(e->
            {
+             textField.setText("");
              setVisible(false);
            });
 
